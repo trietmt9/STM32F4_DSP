@@ -45,6 +45,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
+DMA_HandleTypeDef hdma_spi1_rx;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 UART_HandleTypeDef huart2;
 
@@ -61,6 +63,7 @@ accel_fs_t Accel_fs = accel_fs_16g;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -76,13 +79,13 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
    MPU_ReadAllDMA_Cplt(&hIMU, Accel_fs, Gyro_fs); 
   }
 }
-void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
-{
-  if (hspi->Instance == SPI1)
-  {
-    SPI_MPU_DIS();
-  }
-}
+// void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+// {
+//   if (hspi->Instance == SPI1)
+//   {
+    
+//   }
+// }
 /* USER CODE END 0 */
 
 /**
@@ -114,6 +117,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
@@ -131,7 +135,7 @@ int main(void)
   HAL_UART_Transmit(&huart2, (uint8_t *)data, strlen(data), 1000);
   
   //* Callibrate Gyroscope
-  ret = MPU_Callibrate(&hspi1, &hIMU, 3000, Accel_fs, Gyro_fs);
+  ret = MPU_CallibrateDMA(&hspi1, &hIMU, 3000);
 
   if(ret != MPU9250_OK)
   {
@@ -154,7 +158,7 @@ int main(void)
     // Read IMU data
     if(whoami == MPU9250_SPI_ID)
     {
-      ret = MPU_ReadAll(&hspi1, &hIMU, Accel_fs, Gyro_fs);
+      ret = MPU_ReadAllDMA(&hspi1, &hIMU);
       if(ret != MPU9250_OK)
       {
         char msg[] = "Error reading data\r\n";
@@ -292,6 +296,25 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
 
 }
 
