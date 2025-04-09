@@ -94,7 +94,6 @@ inline mpu_state MPU_WriteRegDMA(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *
     SPI_MPU_EN();
     HAL_SPI_Transmit_DMA(hspi, &reg, 1);
     HAL_SPI_Transmit_DMA(hspi, data, size);
-    SPI_MPU_DIS();
     return MPU9250_OK;
 }
 
