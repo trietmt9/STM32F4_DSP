@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/main.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/main.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/main.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/kalman_filter.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/kalman_filter.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/kalman_filter.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/mpu9250.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/mpu9250.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/mpu9250.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/stm32f4xx_it.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/stm32f4xx_it.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/stm32f4xx_it.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/stm32f4xx_hal_msp.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/stm32f4xx_hal_msp.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/stm32f4xx_hal_msp.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj -c /home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/system_stm32f4xx.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/system_stm32f4xx.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/system_stm32f4xx.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/sysmem.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/sysmem.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/sysmem.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles/STM32F4_DSP.dir/Core/Src/syscalls.c.obj -c /home/stephen/Documents/STM32F4_DSP/Core/Src/syscalls.c",
+  "file": "/home/stephen/Documents/STM32F4_DSP/Core/Src/syscalls.c"
+},
+{
+  "directory": "/home/stephen/Documents/STM32F4_DSP/build",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F446xx -DUSE_HAL_DRIVER -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Core/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/stephen/Documents/STM32F4_DSP/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -x assembler-with-cpp -MMD -MP -g -o CMakeFiles/STM32F4_DSP.dir/startup_stm32f446xx.s.obj -c /home/stephen/Documents/STM32F4_DSP/startup_stm32f446xx.s",
+  "file": "/home/stephen/Documents/STM32F4_DSP/startup_stm32f446xx.s"
+}
+]

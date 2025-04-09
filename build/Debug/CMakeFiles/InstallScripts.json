@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/stephen/Documents/STM32F4_DSP/build/Debug/cmake_install.cmake",
+		"/home/stephen/Documents/STM32F4_DSP/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
