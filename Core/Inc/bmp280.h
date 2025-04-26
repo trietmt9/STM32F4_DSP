@@ -114,7 +114,7 @@ typedef enum
  * @brief BMP280 driver functions
  */
 bmp280_status_t BMP280_ID(I2C_HandleTypeDef* hi2c, uint8_t *id);
-bmp280_status_t BMP280_Init(I2C_HandleTypeDef *hi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
+bmp280_status_t BMP280_Init(I2C_HandleTypeDef *hi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
 bmp280_status_t BMP280_ReadTemperature(I2C_HandleTypeDef *hi2c, float *temperature);
 bmp280_status_t BMP280_ReadPressure(I2C_HandleTypeDef *hi2c, float *pressure);
 bmp280_status_t BMP280_ReadPressureDMA(I2C_HandleTypeDef *hi2c, float *pressure);
