@@ -24,9 +24,11 @@ target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/kalman_filter.c
     ../../Core/Src/mpu9250.c
+    ../../Core/Src/bmp280.c
     ../../Core/Src/stm32f4xx_it.c
     ../../Core/Src/stm32f4xx_hal_msp.c
-    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c
@@ -40,6 +42,7 @@ target_sources(stm32cubemx INTERFACE
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
     ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
     ../../Core/Src/system_stm32f4xx.c
     ../../Core/Src/sysmem.c

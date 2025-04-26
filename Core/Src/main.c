@@ -26,6 +26,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "kalman_filter.h"
+#include "bmp280.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +45,10 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+I2C_HandleTypeDef hi2c1;
+DMA_HandleTypeDef hdma_i2c1_rx;
+DMA_HandleTypeDef hdma_i2c1_tx;
+
 SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_rx;
 DMA_HandleTypeDef hdma_spi1_tx;
@@ -66,6 +71,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -79,13 +85,7 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
    MPU_ReadAllDMA_Cplt(&hIMU, Accel_fs, Gyro_fs); 
   }
 }
-// void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
-// {
-//   if (hspi->Instance == SPI1)
-//   {
-    
-//   }
-// }
+
 /* USER CODE END 0 */
 
 /**
@@ -120,16 +120,16 @@ int main(void)
   MX_DMA_Init();
   MX_SPI1_Init();
   MX_USART2_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  char data[64];
+
+  char data[32];
   char msg[] = "Starting IMU\r\n";
   HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
   ret = MPU_Init(&hspi1, dlpf_rate_3600hz, Accel_fs, Gyro_fs, accel_dlpf_420hz);
-  ret = MPU_WhoAmI(&hspi1, &whoami);
   if(ret != MPU9250_OK)
   {
-    char msg[] = "Device not found\r\n";
-    HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
+    return MPU9250_ERROR; 
   }
   sprintf(data, "IMU ID: 0x%x|%d\r\n", whoami,whoami);
   HAL_UART_Transmit(&huart2, (uint8_t *)data, strlen(data), 1000);
@@ -139,8 +139,7 @@ int main(void)
 
   if(ret != MPU9250_OK)
   {
-    char msg[] = "Error calibrating\r\n";
-    HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
+    return MPU9250_ERROR;
   }
 
   //* Kalaman filter initialization
@@ -229,6 +228,40 @@ void SystemClock_Config(void)
 }
 
 /**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
   * @brief SPI1 Initialization Function
   * @param None
   * @retval None
@@ -307,8 +340,15 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA1_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);

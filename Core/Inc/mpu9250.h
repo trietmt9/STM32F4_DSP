@@ -15,6 +15,8 @@
 #define RAD_TO_DEG          (180.0f / M_PI)
 #define MPU9250_SPI_TIMEOUT 1000
 #define MPU9250_SPI_ID      0x70U
+
+//* MPU9250 state 
 typedef enum 
 {
     MPU9250_OK = 0,
@@ -22,6 +24,7 @@ typedef enum
     MPU9250_TIMEOUT = 2
 }mpu_state;
 
+//* Gyroscope full scale range
 typedef enum 
 {
     gyro_fs_250dps  = 0,
@@ -30,6 +33,7 @@ typedef enum
     gyro_fs_2000dps = 3
 }gyro_fs_t;
 
+//* Accelerometer full scale range
 typedef enum 
 {
     accel_fs_2g  = 0,
@@ -38,6 +42,7 @@ typedef enum
     accel_fs_16g = 3
 }accel_fs_t;
 
+//* Gyroscope low pass filter rate
 typedef enum
 {
     dlpf_rate_0hz   = 0,
@@ -50,6 +55,7 @@ typedef enum
     dlpf_rate_3600hz = 7
 }gyro_dlpf_rate;
 
+//* Accelerometer low pass filter rate
 typedef enum
 {
     accel_dlpf_218hz = 0,
@@ -61,6 +67,7 @@ typedef enum
     accel_dlpf_420hz = 7
 }accel_dlpf_rate;
 
+//* MPU9250 data structure
 typedef struct 
 {
     /* data */
@@ -92,18 +99,18 @@ typedef struct
     float Yaw;
 }mpu9250_t;
 
+//* SPI Driver Chip select
 void SPI_MPU_EN();
 void SPI_MPU_DIS();
 
-mpu_state MPU_WriteRegDMA(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *data, uint16_t size);
+//* SPI Driver read and write functions
 mpu_state MPU_WriteReg(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *data, uint16_t size);
 mpu_state MPU_ReadRegDMA(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *pData, uint16_t size);
 mpu_state MPU_ReadReg(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *pData, uint16_t size);
 
+//* MPU9250 driver functions
 mpu_state MPU_Init(SPI_HandleTypeDef *hspi, gyro_dlpf_rate gyro_dlpft, accel_fs_t accel_fullscale, gyro_fs_t gyro_fullscale,accel_dlpf_rate accel_dlpf);
-mpu_state MPU_InitDMA(SPI_HandleTypeDef *hspi, gyro_dlpf_rate gyro_dlpft, accel_fs_t accel_fullscale, gyro_fs_t gyro_fullscale,accel_dlpf_rate accel_dlpf);
 mpu_state MPU_WhoAmI(SPI_HandleTypeDef *hspi, uint8_t *whoami);
-mpu_state MPU_WhoAmIDMA(SPI_HandleTypeDef *hspi, uint8_t *data);
 mpu_state MPU_Callibrate(SPI_HandleTypeDef *hspi, mpu9250_t *pMPUData, uint32_t samples, accel_fs_t accell_scale, gyro_fs_t gyro_scale);
 mpu_state MPU_CallibrateDMA(SPI_HandleTypeDef *hspi, mpu9250_t *pMPUData, uint32_t samples);
 mpu_state MPU_ReadAll(SPI_HandleTypeDef *hspi, mpu9250_t *pMPUData, accel_fs_t accel_scale, gyro_fs_t gyro_scale);
