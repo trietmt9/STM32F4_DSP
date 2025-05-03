@@ -27,6 +27,7 @@
 #include "stdio.h"
 #include "kalman_filter.h"
 #include "bmp280.h"
+#include "stdint.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,6 +60,7 @@ UART_HandleTypeDef huart2;
 uint8_t ret = 0;
 mpu9250_t hIMU;
 uint8_t whoami = 0;
+uint8_t bmp280_id=0;
 kalman_var kalman_Roll, kalman_Pitch;
 gyro_fs_t Gyro_fs = gyro_fs_2000dps;
 accel_fs_t Accel_fs = accel_fs_16g;
@@ -123,24 +125,17 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
-  char data[32];
+  char data[64];
+
   char msg[] = "Starting IMU\r\n";
   HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 1000);
-  ret = MPU_Init(&hspi1, dlpf_rate_3600hz, Accel_fs, Gyro_fs, accel_dlpf_420hz);
-  if(ret != MPU9250_OK)
-  {
-    return MPU9250_ERROR; 
-  }
-  sprintf(data, "IMU ID: 0x%x|%d\r\n", whoami,whoami);
+  MPU_Init(&hspi1, dlpf_rate_3600hz, Accel_fs, Gyro_fs, accel_dlpf_420hz);
+  BMP280_ID(&hi2c1, &bmp280_id);
+  sprintf(data, "IMU ID: 0x%x|%d\r\n, BMP280 ID: 0x%x|%d", whoami,whoami, bmp280_id, bmp280_id);
   HAL_UART_Transmit(&huart2, (uint8_t *)data, strlen(data), 1000);
   
   //* Callibrate Gyroscope
-  ret = MPU_CallibrateDMA(&hspi1, &hIMU, 3000);
-
-  if(ret != MPU9250_OK)
-  {
-    return MPU9250_ERROR;
-  }
+  MPU_CallibrateDMA(&hspi1, &hIMU, 3000);
 
   //* Kalaman filter initialization
   kalman_init(&kalman_Roll,  0.001, 0.03, 0.05, hIMU.Roll, hIMU.Gyro_callib.Gx);

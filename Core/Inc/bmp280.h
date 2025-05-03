@@ -21,7 +21,7 @@
 /**
  * @brief: Define BMP280 I2C address
  */
-#define BMP280_I2C_ADDRESS          0x76U >> 1
+#define BMP280_I2C_ADDRESS          0x76U << 1
 #define BMP280_CHIP_ID              0x58U
 
 /**
@@ -109,17 +109,33 @@ typedef enum
     BMP280_STANDBY_TIME_4000 = 7,
 }bmp280_standby_time_t;
 
+/**
+ * @brief BMP280 struct 
+ */
+typedef struct 
+{
+    uint8_t data; 
+    // state variables 
+    float pressure; 
+    float temperature;
+    float altitude;
+    
+    // Raw variables
+    int32_t rawPress;
+    int32_t rawTemp;
+    // calibrating data 
+    float calib;
+    // trim data storing
+    int32_t  dig_T1, dig_T2, dig_T3;
+    int64_t  dig_P1, dig_P2, dig_P3, dig_P4, dig_P5, dig_P6, dig_P7, dig_P8, dig_P9;
 
+}bmp280_t; 
 /**
  * @brief BMP280 driver functions
  */
-bmp280_status_t BMP280_ID(I2C_HandleTypeDef* hi2c, uint8_t *id);
-bmp280_status_t BMP280_Init(I2C_HandleTypeDef *hi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
-bmp280_status_t BMP280_ReadTemperature(I2C_HandleTypeDef *hi2c, float *temperature);
-bmp280_status_t BMP280_ReadPressure(I2C_HandleTypeDef *hi2c, float *pressure);
-bmp280_status_t BMP280_ReadPressureDMA(I2C_HandleTypeDef *hi2c, float *pressure);
-bmp280_status_t BMP280_ReadTemperatureDMA(I2C_HandleTypeDef *hi2c, float *temperature);
-bmp280_status_t BMP280_ReadAltitude(I2C_HandleTypeDef *hi2c, float *altitude);
-bmp280_status_t BMP280_ReadAltitudeDMA(I2C_HandleTypeDef *hi2c, float *altitude);
-bmp280_status_t BMP280_ReadCalibrationData(I2C_HandleTypeDef *hi2c, uint16_t *calibration_data);
+bmp280_status_t BMP280_ID(I2C_HandleTypeDef* phi2c, uint8_t *id);
+bmp280_status_t BMP280_Init(I2C_HandleTypeDef *phi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
+bmp280_status_t BMP280_Read(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
+bmp280_status_t BMP280_ReadDMA(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
+bmp280_status_t BMP280_ReadCalibrationData(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
 #endif
