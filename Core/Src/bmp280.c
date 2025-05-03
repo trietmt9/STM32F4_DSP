@@ -8,9 +8,9 @@
  * @return BMP280_OK
  */
 
-inline bmp280_status_t BMP280_ID(I2C_HandleTypeDef *phi2c, uint8_t* id)
+inline bmp280_status_t BMP280_ID(I2C_HandleTypeDef *hi2c, uint8_t* id)
 {
-    HAL_I2C_Mem_Read(phi2c, BMP280_I2C_ADDRESS, BMP280_CHIP_ID, 1, id, sizeof(id), HAL_MAX_DELAY);
+    HAL_I2C_Mem_Read(hi2c, BMP280_I2C_ADDRESS, BMP280_CHIP_ID, 1, id, sizeof(id), HAL_MAX_DELAY);
     return BMP280_OK;
 }
 
@@ -26,10 +26,10 @@ inline bmp280_status_t BMP280_ID(I2C_HandleTypeDef *phi2c, uint8_t* id)
  * @return BMP280_OK
  */
 
-bmp280_status_t BMP280_Init(I2C_HandleTypeDef *phi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time)
+bmp280_status_t BMP280_Init(I2C_HandleTypeDef *hi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time)
 {
     uint8_t data, id;
-    BMP280_ID(phi2c, &id);
+    BMP280_ID(hi2c, &id);
 
     if(id != BMP280_CHIP_ID)
     {
@@ -38,17 +38,17 @@ bmp280_status_t BMP280_Init(I2C_HandleTypeDef *phi2c, bmp280_SPI_operation_t spi
     
     /* Reset BMP280 */
     data = 0xB6u;
-    HAL_I2C_Mem_Write(phi2c, BMP280_I2C_ADDRESS, BMP280_RESET_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
+    HAL_I2C_Mem_Write(hi2c, BMP280_I2C_ADDRESS, BMP280_RESET_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
     
     /* Setup control measurement */
     data &= 0x00u;
     data |= (mode << 0)|(oversampling_p << 2)|(oversampling_t << 5);
-    HAL_I2C_Mem_Write(phi2c, BMP280_I2C_ADDRESS, BMP280_CTRL_MEAS_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
+    HAL_I2C_Mem_Write(hi2c, BMP280_I2C_ADDRESS, BMP280_CTRL_MEAS_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
 
     /* Configure BMP280 */
     data &= 0x00u;
     data |= (spi_operation << 0)|(iir_filter << 2)|(standby_time << 5);
-    HAL_I2C_Mem_Write(phi2c, BMP280_I2C_ADDRESS, BMP280_CONFIG_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
+    HAL_I2C_Mem_Write(hi2c, BMP280_I2C_ADDRESS, BMP280_CONFIG_REG, 1, &data, sizeof(data), HAL_MAX_DELAY);
     return BMP280_OK;
 }
 
@@ -76,10 +76,10 @@ int32_t conpensateTemp(bmp280_t *pBMP280, int32_t adc_Temperature, int32_t* t_fi
  * @param t_fine: Temperature after filter
  * @return Press 
  */
-int32_t conpensatePressure(bmp280_t* pBMP280, int32_t adc_Pressure, int64_t t_fine)
+int32_t conpensatePressure(bmp280_t* pBMP280, int32_t adc_Pressure, int32_t* t_fine)
 {
     int64_t var1, var2, p;
-    var1 = t_fine - 128000;
+    var1 = *t_fine - 128000;
     var2 = var1 * var1 * pBMP280->dig_P6;
     var2 = var2 +((var1*pBMP280->dig_P5) << 17);
     var2 = var2 +((pBMP280->dig_P4) << 35);
@@ -94,7 +94,7 @@ int32_t conpensatePressure(bmp280_t* pBMP280, int32_t adc_Pressure, int64_t t_fi
     var1 = ((pBMP280->dig_P9)*(p>>13)*(p>>13)) >> 25;
     var2 = ((pBMP280->dig_P8)*p) >> 19;
     p = ((p + var1 +var2)>>8) + ((pBMP280->dig_P7)<<4);
-    return (uint32_t)p;
+    return (uint32_t) p;
 }
 
 /** 
@@ -103,15 +103,23 @@ int32_t conpensatePressure(bmp280_t* pBMP280, int32_t adc_Pressure, int64_t t_fi
  * @param pBMP280: pointer to BMP280 struct
  * @return BMP280_OK  
  */
-bmp280_status_t BMP280_ReadRaw(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280)
+bmp280_status_t BMP280_Read(I2C_HandleTypeDef *hi2c, bmp280_t *pBMP280)
 {
-    uint8_t rawdata;
-    uint16_t data[13]; 
-    HAL_I2C_Mem_Read(phi2c, BMP280_I2C_ADDRESS, BMP280_PRESSURE_LSB_REG, 1, &rawdata, sizeof(rawdata), HAL_MAX_DELAY);
+    uint8_t data[6] = {0}; 
+    int32_t temp_fine = 0;
+    HAL_I2C_Mem_Read(hi2c, BMP280_I2C_ADDRESS, BMP280_PRESSURE_LSB_REG, 1, data, sizeof(data), HAL_MAX_DELAY);
     
     // Reading 20bits format 
     pBMP280->rawPress = (data[0]<<12)|(data[1]<<4)|(data[2]>>4);
     pBMP280->rawTemp  = (data[3]<<12)|(data[4]<<4)|(data[5]>>4);
+
+    //reading fixed value 
+    pBMP280->fixed_pressure    = conpensatePressure(pBMP280, pBMP280->rawPress, &temp_fine);
+    pBMP280->fixed_temperature = conpensateTemp(pBMP280, pBMP280->temperature, &temp_fine);
+
+    // reading true value
+    pBMP280->pressure = (float)pBMP280->fixed_pressure/256;
+    pBMP280->temperature = (float)pBMP280->fixed_temperature/100;
 
     return BMP280_OK;
 }

@@ -120,6 +120,10 @@ typedef struct
     float temperature;
     float altitude;
     
+    // fixed value 
+    int32_t fixed_pressure;
+    int32_t fixed_temperature;
+
     // Raw variables
     int32_t rawPress;
     int32_t rawTemp;
@@ -133,9 +137,9 @@ typedef struct
 /**
  * @brief BMP280 driver functions
  */
-bmp280_status_t BMP280_ID(I2C_HandleTypeDef* phi2c, uint8_t *id);
-bmp280_status_t BMP280_Init(I2C_HandleTypeDef *phi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
-bmp280_status_t BMP280_Read(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
+bmp280_status_t BMP280_ID(I2C_HandleTypeDef* hi2c, uint8_t *id);
+bmp280_status_t BMP280_Init(I2C_HandleTypeDef *hi2c, bmp280_SPI_operation_t spi_operation, bmp280_mode_t mode, bmp280_oversample_t oversampling_p, bmp280_oversample_t oversampling_t, bmp280_IIR_filter_t iir_filter, bmp280_standby_time_t standby_time);
+bmp280_status_t BMP280_Read(I2C_HandleTypeDef *hi2c, bmp280_t *pBMP280);
 bmp280_status_t BMP280_ReadDMA(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
 bmp280_status_t BMP280_ReadCalibrationData(I2C_HandleTypeDef *phi2c, bmp280_t *pBMP280);
 #endif
