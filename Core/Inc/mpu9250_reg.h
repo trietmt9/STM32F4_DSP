@@ -213,27 +213,28 @@
 #define ZA_OFFSET_L             0x7EU
 
 /* Magnetometer registers: 0x0A - 0x0F(10:15) */
-#define WIA                     0x00U
-#define INFO                    0x01U
-#define ST1                     0x02U
-#define HXL                     0x03U
-#define HXH                     0x04U
-#define HYL                     0x05U
-#define HYH                     0x06U
-#define HZL                     0x07U
-#define HZH                     0x08U
-#define ST2                     0x09U
-#define CNTL                    0x0AU
-#define CNTL2                   0x0BU
-#define ASTC                    0x0CU
-#define TS1                     0x0DU
-#define TS2                     0x0EU
-#define I2CDIS                  0x0FU
+#define AK8963_ADDRESS                 0x0CU
+#define AK8963_WIA                     0x00U
+#define AK8963_INFO                    0x01U
+#define AK8963_ST1                     0x02U
+#define AK8963_HXL                     0x03U
+#define AK8963_HXH                     0x04U
+#define AK8963_HYL                     0x05U
+#define AK8963_HYH                     0x06U
+#define AK8963_HZL                     0x07U
+#define AK8963_HZH                     0x08U
+#define AK8963_ST2                     0x09U
+#define AK8963_CNTL                    0x0AU
+#define AK8963_CNTL2                   0x0BU
+#define AK8963_ASTC                    0x0CU
+#define AK8963_TS1                     0x0DU
+#define AK8963_TS2                     0x0EU
+#define AK8963_I2CDIS                  0x0FU
 
 /* Magnetometer sensitivity adjustment values: 0x10 - 0x12(16:18) */
-#define ASAX                    0x10U
-#define ASAY                    0x11U
-#define ASAZ                    0x12U
+#define AK8963_ASAX                    0x10U
+#define AK8963_ASAY                    0x11U
+#define AK8963_ASAZ                    0x12U
 
 
 #endif

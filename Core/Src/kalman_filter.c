@@ -56,9 +56,6 @@ float kalman_update(kalman_var *var, float new_angle, float new_rate, float dt)
     y = new_angle - var->angle;
     var->angle += K[0] * y;
     var->bias += K[1] * y;
-
-    var->P[0][0] -= K[0] * var->P[0][0];
-    var->P[0][1] -= K[0] * var->P[0][1];
     var->P[1][0] -= K[1] * var->P[0][0];
     var->P[1][1] -= K[1] * var->P[0][1];
 

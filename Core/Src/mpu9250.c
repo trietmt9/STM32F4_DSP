@@ -5,6 +5,7 @@
  * @date    2025-03-21
  */
 #include "mpu9250.h"
+#include "mpu9250_reg.h"
 
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -361,8 +362,7 @@ mpu_state MPU_ReadAllDMA_Cplt(mpu9250_t *pMPUData, accel_fs_t accel_scale, gyro_
         case gyro_fs_1000dps: g_scale = 1000.0f / 32768.0f; break;
         case gyro_fs_2000dps: g_scale = 2000.0f / 32768.0f; break;
         default: g_scale = 250.0f / 32768.0f; break;
-    }
-    
+    }return
     //TODO: Read Gyroscope data
     pMPUData->Gyro_data.Gx_raw = (((int16_t)pMPUData->data[8] ) << 8) | pMPUData->data[9];
     pMPUData->Gyro_data.Gy_raw = (((int16_t)pMPUData->data[10]) << 8) | pMPUData->data[11];
@@ -382,4 +382,33 @@ mpu_state MPU_ReadAllDMA_Cplt(mpu9250_t *pMPUData, accel_fs_t accel_scale, gyro_
     pMPUData->Pitch = atan2f(-pMPUData->Accel_data.Ax, sqrtf((pMPUData->Accel_data.Ay * pMPUData->Accel_data.Ay) + (pMPUData->Accel_data.Az * pMPUData->Accel_data.Az))) * RAD_TO_DEG;
     pMPUData->Roll = atan2f(pMPUData->Accel_data.Ay, pMPUData->Accel_data.Az) * RAD_TO_DEG;
     return MPU9250_OK;
+}
+
+/**
+ * @brief Initialize AK8963
+ * @param pMPUData: Pointer to IMU struct for collecting data 
+ * @retval MPU9250_OK
+ */
+
+mpu_state AK8963_Init(SPI_HandleTypeDef *hspi, mpu9250_t *pMPUData)
+{
+    uint8_t data; 
+    // Enable I2C master mode
+    data &=~(0xFF << 0);
+    data |= (1 << 5); 
+    MPU_WriteReg(hspi, USER_CTRL, &data, sizeof(data));
+    
+    // Choose I2C master clock as 400kHz
+    data &=~(0xFF << 0);
+    data |= (I2C_CLK_400kHz << 0);
+    MPU_WriteReg(hspi, I2C_MST_CTRL, &data, sizeof(data));
+
+    // Save AK8963 into I2C slave address 0 
+    data &=~(0xFFu << 0);
+    data |= AK8963_ADDRESS;
+    MPU_WriteReg(hspi, I2C_SLV0_ADDR, &data, sizeof(data));
+
+    data &=~(0xFFu << 0);
+    data |= (1 << 8)|(1 << 0); // Enable I2C and set 1 byte data to send 
+    MPU_WriteReg(hspi, I2C_SLV0_CTRL, &data, sizeof(data));
 }

@@ -99,6 +99,26 @@ typedef struct
     float Yaw;
 }mpu9250_t;
 
+typedef enum 
+{
+    I2C_CLK_348kHz = 0,
+    I2C_CLK_333kHz,
+    I2C_CLK_320kHz,
+    I2C_CLK_308kHz,
+    I2C_CLK_296kHz,
+    I2C_CLK_286kHz,
+    I2C_CLK_276kHz,
+    I2C_CLK_267kHz,
+    I2C_CLK_258kHz,
+    I2C_CLK_500kHz,
+    I2C_CLK_471kHz,
+    I2C_CLK_444kHz,
+    I2C_CLK_421kHz,
+    I2C_CLK_400kHz,
+    I2C_CLK_381kHz,
+    I2C_CLK_364kHz
+}i2c_mst_clk_t;
+
 //* SPI Driver Chip select
 void SPI_MPU_EN();
 void SPI_MPU_DIS();
