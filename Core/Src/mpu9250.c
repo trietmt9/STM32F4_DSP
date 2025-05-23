@@ -6,6 +6,7 @@
  */
 #include "mpu9250.h"
 #include "mpu9250_reg.h"
+#include "stm32f4xx_hal_spi.h"
 
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -53,6 +54,51 @@ inline mpu_state MPU_ReadReg(SPI_HandleTypeDef *hspi, uint8_t reg, uint8_t *pDat
     SPI_MPU_DIS();
     return MPU9250_OK;
 }
+
+/**
+ * @brief Write AK8963's register 
+ * @param hspi: pointer to SPI handle structure 
+ * @param subAddress: sub address for slave address 
+ * @param data: data to write to AK8963 register
+ * @retval MPU9250_OK 
+ */
+inline mpu9250_t AK8963_Write(SPI_HandleTypeDef* hspi, uint8_t* subAddress, uint8_t *data)
+{
+    uint8_t address = AK8963_ADDRESS;
+    uint8_t Data = 0;
+    // set slave 0 to the AK8963 and set for write
+    MPU_WriteReg(hspi, I2C_SLV0_ADDR, &address, 1);
+    // set the register to the desired AK8963 sub address 
+    MPU_WriteReg(hspi, I2C_SLV0_REG, subAddress, 1);
+    // stored data for write 
+    MPU_WriteReg(hspi, I2C_SLV0_DO, data, 1);
+    // enable I2C and send 1 byte
+    Data |= (1 << 7)|(1 << 0) ;
+    MPU_WriteReg(hspi, I2C_SLV0_CTRL, &Data, 1);
+} 
+
+/**
+ * @brief Read AK8963's register 
+ * @param hspi: pointer to SPI handle structure 
+ * @param subAddress: sub address for slave address 
+ * @param data: data to write to AK8963 register
+ * @retval MPU9250_OK 
+ */
+inline mpu9250_t AK8963_Read(SPI_HandleTypeDef* hspi, uint8_t* subAddress, uint8_t *destination, uint8_t Bytes)
+{
+    uint8_t address = AK8963_ADDRESS|0x80U;
+    uint8_t Data = 0;
+    // set slave 0 to the AK8963 and set for write
+    MPU_WriteReg(hspi, I2C_SLV0_ADDR, &address, 1);
+    // set the register to the desired AK8963 sub address 
+    MPU_WriteReg(hspi, I2C_SLV0_REG, subAddress, 1);
+    // enable I2C and send number of bytes to read
+    Data |= (1 << 7)|(Bytes << 0);
+    MPU_WriteReg(hspi, I2C_SLV0_CTRL, &Data, 1);
+    HAL_Delay(1);
+    // Read the byte off the MPU9250 EXT_SENS_DATA 
+    MPU_ReadReg(hspi, EXT_SENS_DATA_00, destination, Bytes);
+} 
 
 /**
  * @brief Read MPU9250 register in DMA mode
@@ -103,6 +149,18 @@ mpu_state MPU_WhoAmI(SPI_HandleTypeDef *hspi, uint8_t *data)
     return MPU9250_OK;
 }
 
+/**
+ * @brief Get MPU9250 WHO_AM_I register
+ * @param hspi: SPI handler
+ * @param data: data buffer
+ * @retval MPU9250_OK
+ */
+
+mpu_state MPU_WhoAmIAK8963(SPI_HandleTypeDef *hspi, uint8_t *data)
+{
+    AK8963_Read(hspi, AK8963_WIA, data, 1);
+    return MPU9250_OK;
+}
 /**
  * @brief Initialize MPU9250
  * @param hspi: SPI handler
@@ -393,22 +451,6 @@ mpu_state MPU_ReadAllDMA_Cplt(mpu9250_t *pMPUData, accel_fs_t accel_scale, gyro_
 mpu_state AK8963_Init(SPI_HandleTypeDef *hspi, mpu9250_t *pMPUData)
 {
     uint8_t data; 
-    // Enable I2C master mode
-    data &=~(0xFF << 0);
-    data |= (1 << 5); 
-    MPU_WriteReg(hspi, USER_CTRL, &data, sizeof(data));
     
-    // Choose I2C master clock as 400kHz
-    data &=~(0xFF << 0);
-    data |= (I2C_CLK_400kHz << 0);
-    MPU_WriteReg(hspi, I2C_MST_CTRL, &data, sizeof(data));
-
-    // Save AK8963 into I2C slave address 0 
-    data &=~(0xFFu << 0);
-    data |= AK8963_ADDRESS;
-    MPU_WriteReg(hspi, I2C_SLV0_ADDR, &data, sizeof(data));
-
-    data &=~(0xFFu << 0);
-    data |= (1 << 8)|(1 << 0); // Enable I2C and set 1 byte data to send 
-    MPU_WriteReg(hspi, I2C_SLV0_CTRL, &data, sizeof(data));
+    
 }
